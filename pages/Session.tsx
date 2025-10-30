@@ -17,7 +17,15 @@ const Session: React.FC = () => {
       try {
         setIsLoading(true);
         
-        const userId = auth.currentUser?.uid;
+        // Get user ID with test user bypass support
+        let userId = auth.currentUser?.uid;
+        
+        // Development mode: check for test user bypass
+        if (process.env.NODE_ENV === 'development' && window.location.search.includes('testuser=true')) {
+          console.log('🔐 [DEV] Using test user ID for Session');
+          userId = 'hkTxlGC5iqVMBDSsjnUbsXaCWem1';
+        }
+        
         if (!userId) {
           console.error('❌ No user authenticated');
           navigate('/');

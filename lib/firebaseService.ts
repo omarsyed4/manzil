@@ -32,6 +32,13 @@ class FirebaseService {
   static getCurrentUserId(): string {
     console.log('🔥 FirebaseService.getCurrentUserId - auth:', auth);
     console.log('🔥 FirebaseService.getCurrentUserId - auth.currentUser:', auth.currentUser);
+    
+    // Development mode: check for test user bypass
+    if (process.env.NODE_ENV === 'development' && window.location.search.includes('testuser=true')) {
+      console.log('🔥 [DEV] Using test user ID for Firebase service');
+      return 'hkTxlGC5iqVMBDSsjnUbsXaCWem1';
+    }
+    
     const userId = auth.currentUser?.uid || 'anonymous';
     console.log('🔥 FirebaseService.getCurrentUserId - userId:', userId);
     return userId;

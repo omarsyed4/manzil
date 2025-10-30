@@ -7,7 +7,7 @@
 
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import MushafViewer from '../components/MushafViewer';
+import MushafViewer from '../components/mushaf/MushafViewer';
 
 const Mushaf: React.FC = () => {
   const { surahId } = useParams<{ surahId: string }>();

@@ -4,7 +4,7 @@ import FirebaseService from '../lib/firebaseService';
 import { initializeDatabase, resetUserData } from '../lib/databaseUtils';
 import { seedFatiha } from '../lib/seedFatiha';
 import { AuthService } from '../lib/authService';
-import AuthScreen from '../components/AuthScreen';
+import AuthScreen from '../components/auth/AuthScreen';
 import OnboardingFlow from '../components/OnboardingFlow';
 import { UserPlan, UserProgress, CurrentSession, UserProfile } from '../types';
 import { db, auth } from '../lib/firebase';
@@ -183,12 +183,27 @@ const Today: React.FC = () => {
 
 
 
-  // Handle successful authentication
+// Handle successful authentication
   const handleAuthSuccess = async () => {
     console.log('🎉 Authentication successful, reloading data...');
-    window.location.reload();
+    // Instead of window.location.reload(), re-run the initialization
+    setIsLoading(true);
+    setIsAuthenticated(false);
+    
+    // Re-initialize the data
+    try {
+      const user = await AuthService.initializeAuth();
+      if (user) {
+        setIsAuthenticated(true);
+        // Re-run the full initialization logic here
+        // (copy the logic from the useEffect)
+      }
+    } catch (error) {
+      console.error('Error re-initializing after auth:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
-
 
   // Show auth screen if not authenticated
   if (!isAuthenticated && !isLoading) {

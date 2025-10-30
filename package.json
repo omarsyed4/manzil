@@ -6,12 +6,7 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "dev": "webpack serve --mode development --open",
-    "seed:114": "node scripts/seedSurah114.mjs",
-    "migrate:user114": "node scripts/migrateUser114.mjs",
-    "seed:quran": "node scripts/seedQuranFromQUL.mjs",
-    "seed:mushaf": "node --max-old-space-size=4096 scripts/seedMushafFromSqlite+ScriptJSON.js",
-    "update:user-surah": "node scripts/updateUserSurah.mjs"
+    "dev": "webpack serve --mode development --open"
   },
   "dependencies": {
     "autoprefixer": "^10.4.16",

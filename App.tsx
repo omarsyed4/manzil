@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Navigation from './components/Navigation';
+import Navigation from './components/shared/Navigation';
 import Today from './pages/Today';
 import Landing from './pages/Landing';
 import Library from './pages/Library';

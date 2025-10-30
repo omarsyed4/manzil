@@ -17,6 +17,21 @@ export class AuthService {
 
   static async initializeAuth(): Promise<User | null> {
     return new Promise((resolve) => {
+      // Development mode: check for test user bypass
+      if (process.env.NODE_ENV === 'development' && window.location.search.includes('testuser=true')) {
+        console.log('🔐 [DEV] Using test user bypass');
+        const mockUser = {
+          uid: 'hkTxlGC5iqVMBDSsjnUbsXaCWem1',
+          email: 'test@manzil.dev',
+          displayName: 'Test User',
+          photoURL: null
+        } as User;
+        this.currentUser = mockUser;
+        this.authReady = true;
+        resolve(mockUser);
+        return;
+      }
+
       if (this.authReady && this.listenerRegistered) {
         resolve(this.currentUser);
         return;

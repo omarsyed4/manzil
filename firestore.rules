@@ -1,0 +1,39 @@
+// Firebase Security Rules for Manzil MVP with Sub-Collections
+// Copy and paste these rules into your Firebase Console > Firestore Database > Rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // users collection - private to the owner only
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+      match /{sub=**} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+
+    // surahs collection - fully public read, including nested subcollections
+    match /surahs/{surahId} {
+      allow read: if true; // surah docs are public
+      allow write: if false; // prevent writes in production
+
+      // ayahs under a surah
+      match /ayahs/{ayahId} {
+        allow read: if true;
+        allow write: if false;
+
+        // words under an ayah
+        match /words/{wordId} {
+          allow read: if true;
+          allow write: if false;
+        }
+      }
+      // optional nested collections like rukus/sajdah
+      match /{anySub=**} {
+        allow read: if true;
+        allow write: if false;
+      }
+    }
+  }
+}

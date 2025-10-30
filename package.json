@@ -1,0 +1,56 @@
+{
+  "name": "manzil",
+  "version": "1.0.0",
+  "description": "Manzil - Quran memorization app with spaced repetition",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "dev": "webpack serve --mode development --open",
+    "seed:114": "node scripts/seedSurah114.mjs",
+    "migrate:user114": "node scripts/migrateUser114.mjs",
+    "seed:quran": "node scripts/seedQuranFromQUL.mjs",
+    "seed:mushaf": "node --max-old-space-size=4096 scripts/seedMushafFromSqlite+ScriptJSON.js",
+    "update:user-surah": "node scripts/updateUserSurah.mjs"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.16",
+    "firebase": "^12.4.0",
+    "postcss": "^8.4.32",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "tailwindcss": "^3.3.6",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "@babel/preset-react": "^7.22.0",
+    "@babel/preset-typescript": "^7.23.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "babel-loader": "^9.1.0",
+    "better-sqlite3": "^12.4.1",
+    "copy-webpack-plugin": "^13.0.1",
+    "css-loader": "^6.8.0",
+    "html-webpack-plugin": "^5.5.0",
+    "postcss-loader": "^7.3.0",
+    "stream-json": "^1.9.1",
+    "style-loader": "^3.3.0",
+    "typescript": "^5.3.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "keywords": [
+    "react",
+    "webpack",
+    "typescript",
+    "quran",
+    "memorization",
+    "spaced-repetition"
+  ],
+  "author": "Omar Syed",
+  "license": "MIT"
+}

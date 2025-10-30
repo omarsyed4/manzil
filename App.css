@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  
+  .arabic-text {
+    font-family: 'Noto Sans Arabic', 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    direction: rtl;
+    text-align: right;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-dark-text px-6 py-3 rounded-xl font-normal hover:bg-accent-hover transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-dark-surface text-dark-text-secondary px-6 py-3 rounded-xl font-normal hover:bg-dark-surface-hover hover:text-dark-text transition-colors duration-200 border border-dark-border;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-dark-text px-6 py-3 rounded-xl font-normal hover:bg-accent-hover transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-dark-surface border border-dark-border rounded-2xl p-6 transition-colors duration-200;
+  }
+  
+  .card-hover {
+    @apply bg-dark-surface border border-dark-border rounded-2xl p-6 hover:bg-dark-surface-hover transition-colors duration-200 cursor-pointer;
+  }
+  
+  .input-field {
+    @apply bg-dark-surface border border-dark-border rounded-xl px-4 py-3 text-dark-text placeholder-dark-text-muted focus:border-accent focus:outline-none transition-colors duration-200;
+  }
+  
+  .search-bar {
+    @apply bg-dark-surface border border-dark-border rounded-xl px-4 py-3 text-dark-text placeholder-dark-text-muted focus:border-accent focus:outline-none transition-colors duration-200 w-full;
+  }
+  
+  .surah-tile {
+    @apply bg-dark-surface border border-dark-border rounded-xl p-4 hover:bg-dark-surface-hover transition-colors duration-200 cursor-pointer;
+  }
+  
+  .surah-tile.selected {
+    @apply border-accent bg-accent/10;
+  }
+  
+  .difficulty-badge {
+    @apply px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .difficulty-easy {
+    @apply bg-easy/20 text-easy border border-easy/30;
+  }
+  
+  .difficulty-medium {
+    @apply bg-medium/20 text-medium border border-medium/30;
+  }
+  
+  .difficulty-hard {
+    @apply bg-hard/20 text-hard border border-hard/30;
+  }
+  
+  .progress-circle {
+    @apply relative w-8 h-8;
+  }
+  
+  .progress-circle svg {
+    @apply w-full h-full transform -rotate-90;
+  }
+  
+  .progress-circle-bg {
+    @apply stroke-progress-bg;
+  }
+  
+  .progress-circle-fill {
+    @apply stroke-progress-fill transition-all duration-300;
+  }
+  
+  /* Anki-style flashcard piles */
+  .pile-card {
+    @apply bg-dark-surface border border-dark-border rounded-2xl p-6 transition-all duration-200 hover:bg-dark-surface-hover cursor-pointer;
+  }
+  
+  .pile-card.learn {
+    @apply border-easy bg-easy/5;
+  }
+  
+  .pile-card.review {
+    @apply border-medium bg-medium/5;
+  }
+  
+  .pile-card.memorize {
+    @apply border-hard bg-hard/5;
+  }
+  
+  .pile-card.consolidation {
+    @apply border-accent bg-accent/5;
+  }
+  
+  .pile-number {
+    @apply text-3xl font-bold;
+  }
+  
+  .pile-title {
+    @apply text-lg font-medium text-dark-text mb-1;
+  }
+  
+  .pile-subtitle {
+    @apply text-sm text-dark-text-secondary;
+  }
+  
+  .session-time {
+    @apply text-sm text-dark-text-muted mt-2;
+  }
+}
